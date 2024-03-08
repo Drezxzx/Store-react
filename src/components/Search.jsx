@@ -1,13 +1,14 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import {Link} from "react-router-dom"
-
+import {IconSearch, IconX} from '@tabler/icons-react'
 
 export default function Search() {
     const divRef = useRef(null);
     const [width, setwitdh] = useState();
     const [search, setSearch] = useState('');
     const [result, setResult] = useState([]);
+    const [hidden, setHidden] = useState(true);
 
     const handleChange = async (e) => {
         setSearch(e.target.value);
@@ -38,11 +39,19 @@ export default function Search() {
 
         return () => {};
     }, [search]);
-
+    const hiddenClass = hidden ? "hidden" : "";
     const widthDiv = width ? `${width}px` : "0"
+    const Icon = ({className})=>{
+        if(hidden){
+            return <IconSearch className={className} onClick={()=>{setHidden(!hidden)}}/>
+        }else{
+            return <IconX className={className} onClick={()=>{setHidden(!hidden)}}/>
+        }
+    }
     return (
         <div className="search">
-            <input type="text" ref={divRef} placeholder="Iphone, Samsung..." onChange={handleChange} />
+            <Icon className={'cursor-pointer transition'}></Icon>
+            <input type="text" className={`${hiddenClass}`} ref={divRef} placeholder="Iphone, Samsung..." onChange={handleChange} />
             <div className="result" style={{ width: widthDiv }}
             >
                 {result.length > 0 &&

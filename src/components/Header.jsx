@@ -1,28 +1,19 @@
 import Search from "./Search"
-import { useState, useEffect } from 'react'
+
 import { Link } from 'react-router-dom'
 import RenderCart from "./RenderCart"
-import Menu from "./menu"
+
+
 
 export function Header({ message }) {
-    const [usernameValue, setUsernameValue] = useState("");
-
-    useEffect(() => {
-        const username = JSON.parse(localStorage.getItem("user"));
-        if (username) {
-            const user = username[0];
-            setUsernameValue(user.username);
-        }
-    }, []);
-
+  
     return (
-        <header>
-            <Menu />
+        <header className="flex  fixed top-[-1px] bottom-0 text-white z-50 bg-[#111315] border-0 w-full h-[5rem] justify-between items-center p-4">
+            
             <Search />
-            <Link to={"/"}>
+            <Link  to={"/"}>
                 <h1>DREPHONE</h1>
             </Link>
-            <h2>Username: {usernameValue}</h2>
             <div className={message ? "message" : "not-message"}>
                 <RenderCart />
             </div>

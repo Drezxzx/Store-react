@@ -16,7 +16,7 @@ export default function Profile() {
 
     const RenderProfile = () => {
         return (
-            <main className='w-screen h-screen' >
+            <main className='w-screen  h-screen' >
                 <h1>{profile.username}</h1>
                 <div className='flex w-full h-full ' >
                     {profile.buys.map((buy) => {

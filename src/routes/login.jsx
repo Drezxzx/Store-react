@@ -36,14 +36,14 @@ export default function Login() {
             )
         }
     }
-    const red = message.length > 0 ? " text-black focus:outline-nonebg-red-300 p-2 w-full animate-pulse rounded-2xl duration-150 " : "focus:outline-none border-slate-950 p-2 w-full rounded-2xl text-black  "
+    const red = message.length > 0 ? " border text-black focus:outline-nonebg-red-300 p-2 w-full animate-pulse rounded-2xl duration-150 " : " border focus:outline-none border-slate-950 p-2 w-full rounded-2xl text-black  "
     return (
-        <main className='bg-slate-800 w-screen    h-screen flex  justify-center text-white
+        <main className='bg-[#f3f0f0] w-screen    h-screen flex  justify-center text-black
          items-center ' >
 
-            <form ref={formRef} className='flex flex-col justify-center items-center w-[80%] rounded-lg h-4/6 max-w-[300px]  animate-fade-in  gap-10' onSubmit={handleClick}  >
+            <form ref={formRef} className='flex  flex-col bg-white shadow-md shadow-black/50 justify-center items-center w-[80%] rounded-lg h-[80%] max-w-[600px]  animate-fade-in  md:gap-10 gap-4' onSubmit={handleClick}  >
                 <div className='w-full flex justify-center '>
-                <Link to={"/"}> <StoreIcon className=' text-red-700 hover:scale-110 transform transition duration-300 ease-in-outtext-red-700' size={90} ></StoreIcon></Link>
+                <Link to={"/"}> <StoreIcon className=' text-black-700 hover:scale-110 transform transition duration-300 ease-in-outtext-red-700' size={90} ></StoreIcon></Link>
 
                 </div>
                 {/* <Link to={"/"}><img className='w-14 bg-transparent hover:scale-110 transform transition duration-300 ease-in-out ' src={Svg} alt="" /></Link> */}
@@ -62,7 +62,7 @@ export default function Login() {
                 </label>
                 <Link to={"/create"}><p className='text-lg font-semibold underline'>Crear Cuenata</p></Link>
                 <Printmessage />
-                <button className='bg-red-700 p-2 w-44 shadow-sm shadow-red-600 rounded-full hover:bg-red-400 hover:translate-y-1 hover:transition-all  '>Iniciar Sesion</button>
+                <button className='bg-black p-2 w-44 shadow-sm shadow-black/50 rounded-full hover:bg-black/40 text-white text-base hover:scale-105 hover:transition-all  '>Iniciar Sesion</button>
             </form>
         </main>
 
