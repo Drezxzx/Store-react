@@ -1,5 +1,5 @@
 import Search from "./Search"
-
+import logo from "../public/logo.jpeg"
 import { Link } from 'react-router-dom'
 import RenderCart from "./RenderCart"
 
@@ -12,7 +12,7 @@ export function Header({ message }) {
             
             <Search />
             <Link  to={"/"}>
-                <h1>DREPHONE</h1>
+                <img className="size-14 object-contain rounded-full shadow shadow-white hover:scale-105" src={logo} alt="" />
             </Link>
             <div className={message ? "message" : "not-message"}>
                 <RenderCart />

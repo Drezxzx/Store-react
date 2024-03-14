@@ -1,24 +1,34 @@
 
+import { useEffect } from 'react';
 import {Header} from '../components/Header.jsx'
-import UseCart from '../hooks/useCart.jsx';
+
 import Menu from '../components/menu.jsx';
 
-
+import PrintProduct from '../components/PrintProductsCart.jsx';
+import Footer from '../components/Footer.jsx';
 
 export default function Cart() {
-    const {PrintProduct, loading, hidden, Loader} = UseCart()
+    useEffect(()=>{
+        const url = window.location.href
+        const isInUrl = url.includes('cart')
+        if(isInUrl){
+            document.title = 'Carrito'
+            
+        }
+
+    },[])
+
 
     
     return (
         <>
             <Menu></Menu>
-            <Loader hidden={hidden} loading={loading} />
             <Header />
-            <article className='w-full mx-w-[600px] h-full  flex items-center justify-center '>
-                <div className='flex flex-col gap-7 mt-40'>
-                <PrintProduct/>
-                </div>
-            </article>
+            <div className='w-screen h-screen'>
+
+            <PrintProduct></PrintProduct>
+            </div>
+            <Footer></Footer>
         </>
     );
 }

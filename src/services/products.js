@@ -1,5 +1,5 @@
 export default async function getProducts({token}){
-    const response = await fetch(`http://localhost:3000/products/`, {
+    const response = await fetch(`https://api-store-fl2b.onrender.com/products/`, {
         headers:{
             "Authorization" : `Bearer ${token}`
         }

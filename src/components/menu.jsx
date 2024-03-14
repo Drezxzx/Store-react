@@ -8,19 +8,7 @@ export default function Menu() {
     const [menuactive, setMenuActive] = useState(false)
     const [islogin, setIslogin] = useState(false)
     const [screenWith, setScreenWith] = useState(window.innerWidth)
-    useEffect(() => {
-        setScreenWith(window.innerWidth)
-        const url = document.location.href.split("/").some(url => url === "phone")
-        if (!url) {
-            setMenuActive(true)
-        }else{
-            setMenuHidden(false)
-        }
-        // console.log(ac);
-
-    }
-        , []
-    )
+   
 
     const handleClick = ()=>{
         const menu = document.querySelector(".menu")
@@ -66,10 +54,7 @@ export default function Menu() {
                 <ul className={` ${menuHiddenClass.translate}    z-20 md:border-t md:border-white/15 md:justify-center lg:text-2xl lg:gap-10 flex flex-col gap-y-10 transition font-bold text-xl p-2 text-white/90 animate-duration-250 lg:justify-start   bg-[#111315] left-0 md:h-screen lg:w-60 ${className.with} w-40 ${className.position} ${className.top} rounded-r-md lg:rounded-bl-sm lg:rounded-tr-none`} >
                     <li className='w-24 lg:w-28 lg:mt-[10rem]' ><Link className='flex flex-row gap-2 items-center hover:text-slate-500/90 hover:scale-110 transition' to={"/"}><IconHome className='lg:size-24 size-20'></IconHome>Home</Link></li>
                     {userLink}
-                    {islogin && <li className='w-24 lg:w-28 relative ' >
-                        <Link className='flex flex-row gap-2 items-center hover:text-slate-500/90 hover:scale-110 transition' to={"/profile"}><IconUserCircle className='lg:size-24 size-20'></IconUserCircle>Perfil</Link>
-                       
-                        </li> } 
+                    
                 </ul>
 
 

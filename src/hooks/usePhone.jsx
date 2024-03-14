@@ -5,20 +5,24 @@ export function usePhone() {
     const [totalPages, setTotalPages] = useState()
     const elementperpage = 6
     const [pages, setPages] = useState(1)
+    const [isloading , setIsloading] = useState(true)
     useEffect(() => {
     const fechtData = async () => {
-      const response = await fetch(`http://localhost:3000/phones?pages=${pages}&productsperpages=${elementperpage}`)
+      const response = await fetch(`https://api-store-fl2b.onrender.com/phones?pages=${pages}&productsperpages=${elementperpage}`)
       const data = await response.json()
 
-      const response2 = await fetch(`http://localhost:3000/pages/${elementperpage}`)
+      const response2 = await fetch(`https://api-store-fl2b.onrender.com/pages/${elementperpage}`)
       const [data2] = await response2.json()
-      
+      console.log({data2, data});
       setTotalPages(data2.pages)
-      setMovile(data)
+      if (data && data2) {
+        setMovile(data)
+        setIsloading(false)
+      }
     }
      fechtData()
  },[pages])
 
- return {movile, pages, elementperpage, totalPages, setPages}
+ return {movile, pages, elementperpage, isloading, totalPages, setPages}
 }
 

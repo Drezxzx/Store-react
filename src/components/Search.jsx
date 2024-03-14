@@ -39,8 +39,8 @@ export default function Search() {
 
         return () => {};
     }, [search]);
+   
     const hiddenClass = hidden ? "hidden" : "";
-    const widthDiv = width ? `${width}px` : "0"
     const Icon = ({className})=>{
         if(hidden){
             return <IconSearch className={className} onClick={()=>{setHidden(!hidden)}}/>
@@ -48,22 +48,43 @@ export default function Search() {
             return <IconX className={className} onClick={()=>{setHidden(!hidden)}}/>
         }
     }
+    const App = ()=>{
+        if (search.length > 0 && result.length > 0 ) {
+           return(
+                result.map((phone) => (
+                    <Link  to={`/phone/${phone.id}`} onClick={handleClick}  key={phone.id}>
+                        <div key={phone.id} onClick={()=>{setHidden(!hidden)}} className=" hover:bg-white/90 transition animate-fade-in animate-duration-250  shadow-black w-full hover:shadow-md rounded p-2 gap-1 flex flex-row">
+                            <img className="size-16" src={phone.cover} alt={phone.name} />
+                            <h3 className="flex flex-col-reverse "><h3 className="font-semibold">{phone.price}€</h3><span className="text-black/90 text-2xl font-semibold">{phone.name}</span></h3>
+                            
+                        </div>
+                    </Link>
+                ))
+           )
+        }else if (search.length === 0 && result.length ===0){
+            return
+        }else{
+            return <div className="text-black/90 text-2xl font-semibold">No resultados</div>
+        }
+        
+    }
     return (
-        <div className="search">
+        <div className="">
             <Icon className={'cursor-pointer transition'}></Icon>
-            <input type="text" className={`${hiddenClass}`} ref={divRef} placeholder="Iphone, Samsung..." onChange={handleChange} />
-            <div className="result" style={{ width: widthDiv }}
+            <div className={`bg-slate-500/20 backdrop-blur-lg ${hiddenClass} w-screen h-screen absolute left-0 top-0 z-50 flex items-center flex-col `}>
+            <div className=" bg-slate-100 rounded animate-fade-in animate-duration-300 p-3 md:w-1/2 mt-20 text-black"
             >
-                {result.length > 0 &&
-                    result.map((phone) => (
-                        <Link  to={`/phone/${phone.id}`} onClick={handleClick}  key={phone.id}>
-                            <div key={phone.id}>
-                                <h3>{phone.name}</h3>
-                                <img className="phone-img-search" src={phone.cover} alt={phone.name} />
-                            </div>
-                        </Link>
-                    ))}
+                <div className="w-full flex  items-center justify-between p-1">
+                <IconSearch></IconSearch>
+                <input type="text" className={`${hiddenClass} focus:outline-none text-black shadow rounded w-[90%] p-3 max-h-9`} ref={divRef} placeholder="Iphone, Samsung..." onChange={handleChange} />
+                <IconX className="cursor-pointer hover:scale-110" onClick={()=>{setHidden(!hidden)}}></IconX>
+                </div>
+                <App></App>
+           
+               
             </div>
+            </div>
+           
         </div>
     );
 }
