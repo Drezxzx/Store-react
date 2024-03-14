@@ -28,7 +28,7 @@ export default function Search() {
     useEffect(() => {
         const fetchData = async () => {
             if (search !== "") {
-                const response = await fetch(`http://localhost:3000/search/${search}`);
+                const response = await fetch(`https://api-store-fl2b.onrender.com/search/${search}`);
                 const data = await response.json();
                 setResult(data);
             } else {
