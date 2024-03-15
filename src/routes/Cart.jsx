@@ -24,11 +24,11 @@ export default function Cart() {
         <>
             <Menu></Menu>
             <Header />
-            <div className='w-screen h-screen'>
-
+            <div className='h-fit'>
             <PrintProduct></PrintProduct>
+
             </div>
-            <Footer></Footer>
+           
         </>
     );
 }

@@ -111,7 +111,7 @@ const PrintProduct = () => {
         const [hidden, setHidden] = useState(true);
 
         return(
-            <div key={item.id} className='bg-white shadow-lg p-1 flex-col  shadow-black/50 flex md:flex-row w-full rounded-md items-center relative justify-center gap-5 '>
+            <div key={item.id} className='bg-white shadow-lg p-1 flex-col  shadow-black/50 flex md:flex-row w-full rounded-md items-center relative  justify-center gap-5 '>
                 {loading && <div className='w-full h-full bg-slate-400/50 backdrop-blur flex items-center justify-center absolute text-base animate-fade-in animate-duration-400 text-black font-semibold'><Oval></Oval> Comprando...</div>}
                 {!loading && !hidden && <div className='w-full h-full bg-slate-400/50 backdrop-blur flex items-center justify-center absolute text-base animate-fade-in animate-duration-400 text-black font-semibold'>Compra realizada con éxito <IconCheckbox color='green'></IconCheckbox></div>}
                 <img src={item.cover} className='size-32' alt={`imagen de ${item.name}`} />
@@ -135,12 +135,12 @@ const PrintProduct = () => {
     const App = ()=>{
         if (products.length > 0) {
             return (
-                <article className='flex flex-col-reverse gap-6  lg:flex-row-reverse w-full relative justify-center items-center  h-full'>
+                <article className='flex flex-col-reverse gap-6   lg:flex-row-reverse w-full relative justify-center items-center h-fit mt-9 '>
                     <div className={`w-screen ${className} h-screen absolute bg-slate-400/50 backdrop-blur flex justify-center items-center z-40`}>{Text}</div>
-                    <div className='flex justify-center items-center overflow-auto  lg:mt-36 h-fit p-3  flex-col gap-5 w-full  lg:w-[40%] rounded'>
+                    <div className='flex justify-center items-center   lg:mt-36 h-fit p-3  flex-col gap-5 w-full  lg:w-[40%] rounded'>
                         {Product}
                     </div>
-                    <div className='md:mt-36 mt-32 flex items-center justify-center max-h-[30rem]  lg:w-1/2 md:w-[80%] w-full'>
+                    <div className='md:mt-36 mt-16 flex items-center justify-center max-h-[30rem]  lg:w-1/2 md:w-[80%] w-full'>
                         <CheckOut products={productsLenght} total={total} totalNeto={totalWith} buyAll={() => buyAll()} ></CheckOut>
                     </div>
                 </article>
@@ -155,7 +155,7 @@ const PrintProduct = () => {
     }
 
     return (
-        <div>
+        <div className='w-screen h-screen'>
             {pageLoading && <div className='w-screen h-screen flex flex-col items-center justify-center'><Oval color='black' secondaryColor='blck'></Oval> Cargando...</div> }
             <App></App>
         </div>
